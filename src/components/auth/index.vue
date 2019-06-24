@@ -5,14 +5,9 @@
 </template>
 
 <script>
-import { mapState, mapActions, mapMutations } from 'vuex'
+import { createNamespacedHelpers } from 'vuex'
+const { mapState, mapActions, mapMutations } = createNamespacedHelpers('auth')
 export default {
-  props: {
-    onFailedAuthentication: {
-      type: Function,
-      required: true
-    }
-  },
   computed: {
     ...mapState([
       'uid',

@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import { firebase } from '~/components/firebase'
+import { firebase } from '@/components/utils/firebase'
 import * as firebaseui from 'firebaseui'
 import 'firebaseui/dist/firebaseui.css'
 const ui = new firebaseui.auth.AuthUI(firebase.auth())
@@ -26,6 +26,7 @@ export default {
     setupSignInUi () {
       const vInstance = this
       const uiConfig = {
+        credentialHelper: firebaseui.auth.CredentialHelper.NONE,
         callbacks: {
           uiShown () {
             vInstance.isSignInUILoaded = true

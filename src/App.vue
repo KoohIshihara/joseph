@@ -19,6 +19,8 @@ export default {
 </script>
 
 <style>
+@import "./plugins/meltline.css";
+
 html,
 body {
   margin: 0;
