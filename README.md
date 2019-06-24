@@ -1,4 +1,4 @@
-# interim-hiring-applying-bot
+# Joseph
 
 ## Project setup
 ```
