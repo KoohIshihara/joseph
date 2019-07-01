@@ -9,6 +9,12 @@ export default new Router({
   base: process.env.BASE_URL,
   routes: [
     {
+      path: '/',
+      name: 'sign-in',
+      component: () =>
+        import('@/views/SignIn')
+    },
+    {
       path: '/home',
       name: 'home',
       component: () =>
