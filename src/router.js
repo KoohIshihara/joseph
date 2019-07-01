@@ -12,14 +12,48 @@ export default new Router({
       path: '/home',
       name: 'home',
       component: () =>
-        import(/* webpackChunkName: "route-SignIn" */ '@/views/Home')
+        import('@/views/Home')
+    },
+    {
+      path: '/create_group',
+      name: 'create_group',
+      component: () =>
+        import('@/views/CreateGroup')
+    },
+    {
+      path: '/group_member/:group_id',
+      name: 'group_member',
+      props: true,
+      component: () =>
+        import('@/views/GroupMember')
+    },
+    {
+      path: '/add_member/:group_id',
+      name: 'add_member',
+      props: true,
+      component: () =>
+        import('@/views/AddMember')
+    },
+    {
+      path: '/person/new/:group_id',
+      name: 'create_person',
+      props: true,
+      component: () =>
+        import('@/views/CreatePerson')
+    },
+    {
+      path: '/chat/:group_id',
+      name: 'chat',
+      props: true,
+      component: () =>
+        import('@/views/Chat')
     },
     {
       path: '/sign-in/:redirect',
       name: 'sign-in',
       props: true,
       component: () =>
-        import(/* webpackChunkName: "route-SignIn" */ '@/views/SignIn')
+        import('@/views/SignIn')
     }
   ]
 })

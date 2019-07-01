@@ -1,28 +1,47 @@
 <template lang="pug">
 
-div.wrap-home
-  ModuleFooter
+Auth(@loggedIn="loggedIn" @loginFailed="loginFailed").wrap-home
+  div.wrap-page
+    Header(:headerContent="headerContent")
+    Footer
 
 </template>
 
 <style lang="scss" scoped>
 .wrap-page {
-  overflow: scroll;
-  display: block;
-  width: 100%;
-  /*height: calc(100vh - 48px);*/
-  height: 100vh;
-  -webkit-overflow-scrolling: touch;
-  overflow-scrolling: touch;
 }
 </style>
 
 <script>
-import ModuleFooter from '@/components/modules/ModuleFooter'
+import Auth from '@/components/auth'
+import Header from '@/components/modules/Header'
+import Footer from '@/components/modules/Footer'
 
 export default {
   components: {
-    ModuleFooter
+    Auth,
+    Header,
+    Footer
+  },
+  data () {
+    return {
+      headerContent: Object
+    }
+  },
+  created () {
+    this.headerContent = {
+      left: {},
+      right: {},
+      center: { label: 'Timeline' }
+    }
+  },
+  methods: {
+    async loggedIn () {
+      console.log('authed')
+    },
+    async loginFailed () {
+      console.log('unauthed')
+    }
   }
 }
 </script>

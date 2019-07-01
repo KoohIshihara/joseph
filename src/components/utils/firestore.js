@@ -5,8 +5,8 @@ import 'firebase/firestore'
 const firestore = firebase.firestore()
 
 // Disable deprecated features
-firestore.settings({
-  timestampsInSnapshots: true
-})
+// firestore.settings({
+//   timestampsInSnapshots: true
+// })
 
 export { firestore }
