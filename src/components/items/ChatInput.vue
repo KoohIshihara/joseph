@@ -143,7 +143,6 @@ export default {
         .collection('MESSAGE')
         .add(messageObj)
       messageObj.id = messageDoc.id
-      // this.$emit('pushMessage', messageObj)
       this.message = ''
     },
     changePerson (targetPerson) {

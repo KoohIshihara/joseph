@@ -96,7 +96,8 @@ export default {
       // push groupId to selected persons via custom API
       console.log('selectedUsers', selectedUsers)
 
-      const pushGroupIdToUsersURI = 'http://localhost:5000/joseph-alike/us-central1/pushGroupIdToUsers'
+      // const pushGroupIdToUsersURI = 'http://localhost:5000/joseph-alike/us-central1/pushGroupIdToUsers'
+      const pushGroupIdToUsersURI = 'https://us-central1-joseph-alike.cloudfunctions.net/pushGroupIdToUsers'
       const response = await fetch(pushGroupIdToUsersURI, {
         method: 'POST',
         mode: 'cors',
