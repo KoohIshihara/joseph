@@ -1,9 +1,11 @@
 <template lang="pug">
 
-div(v-if="person!=={}").wrap-item.mb12
-  div.wrap-chat-bubble.f
+div.wrap-item.mb12
+  div.wrap-chat-bubble.f.flex-bottom
     img(:class="active" :src="person.icon").icon.mr8
-    span(:class="active").text.px8.py4 {{message.text}}
+    div.wrap-text
+      span.name.mb4 {{person.name}}
+      span(:class="active").text.px8.py4 {{message.text}}
 
 </template>
 
@@ -15,19 +17,28 @@ div(v-if="person!=={}").wrap-item.mb12
       width: 18px;
       height: 18px;
       border-radius: 50%;
-      border: solid 1px rgba(0, 0, 0, 0.2);
+      /*border: solid 1px rgba(0, 0, 0, 0.2);*/
 
       transition: all 400ms ease-in;
       opacity: 0;
     }
-    .text {
-      background: #f0f0f0;
-      color: #2a2a2a;
-      border-radius: 6px;
-      opacity: 0;
+    .wrap-text {
+      .name {
+        display: block;
+        font-size: 12px;
+        color: #999;
+      }
+      .text {
+        display: inline-block;
+        background: #f0f0f0;
+        color: #2a2a2a;
+        font-size: 15px;
+        border-radius: 6px;
+        opacity: 0;
 
-      transition: all 400ms ease-in;
-      transform: translateY(8px);
+        transition: all 400ms ease-in;
+        transform: translateY(8px);
+      }
     }
     .active {
       opacity: 1 !important;

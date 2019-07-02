@@ -48,6 +48,10 @@ export default new Router({
         import('@/views/CreatePerson')
     },
     {
+      path: '/@chat/:group_id',
+      redirect: '/chat/:group_id'
+    },
+    {
       path: '/chat/:group_id',
       name: 'chat',
       props: true,

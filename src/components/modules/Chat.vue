@@ -17,7 +17,7 @@ div.wrap-module
   padding-top: 48px;
   .wrap-bubbles {
     display: block;
-    width: 90%;
+    width: 95%;
     max-width: 480px;
     height: calc(100% - (60px + 36px));
     margin: 0 auto;
