@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div id="firebaseui-auth-container"/>
-    <v-progress-circular v-show="!isSignInUILoaded" :size="50" color="primary" indeterminate/>
+    <div id="firebaseui-auth-container" />
+    <v-progress-circular v-show="!isSignInUILoaded" :size="50" color="primary" indeterminate />
   </div>
 </template>
 
@@ -15,6 +15,12 @@ export default {
   data () {
     return {
       isSignInUILoaded: false
+    }
+  },
+  props: {
+    redirect: {
+      type: String,
+      required: true
     }
   },
   mounted () {
@@ -31,7 +37,17 @@ export default {
           uiShown () {
             vInstance.isSignInUILoaded = true
           },
-          signInSuccess: () => false
+          // signInSuccess: (authResult) => {
+          //   console.log('sign in success result')
+          //   this.$router.replace(this.redirect)
+          //   return false
+          // },
+          signInSuccessWithAuthResult: (authResult, redirectUrl) => {
+            // authResult.additionalUserInfo.isNewUser
+            console.log('redirect:', this.redirect)
+            this.$router.replace(this.redirect)
+            return false
+          }
         },
         signInOptions: [
           // Leave the lines as is for the providers you want to offer your users.

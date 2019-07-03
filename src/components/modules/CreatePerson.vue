@@ -202,8 +202,8 @@ export default {
       var ctx = canvas.getContext('2d')
       var cw = canvas.width
       var ch = canvas.height
-      var maxW = 280
-      var maxH = 280
+      var maxW = 200
+      var maxH = 200
 
       var img = new Image()
       img.onload = function () {

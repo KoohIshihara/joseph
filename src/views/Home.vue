@@ -2,7 +2,8 @@
 
 Auth(@loggedIn="loggedIn" @loginFailed="loginFailed").wrap-home
   div.wrap-page
-    Header(:headerContent="headerContent")
+    Header(:headerContent="headerContent" @onRight="onRight")
+    ModuleHome
     Footer
 
 </template>
@@ -16,12 +17,17 @@ Auth(@loggedIn="loggedIn" @loginFailed="loginFailed").wrap-home
 import Auth from '@/components/auth'
 import Header from '@/components/modules/Header'
 import Footer from '@/components/modules/Footer'
+import ModuleHome from '@/components/modules/Home'
+
+import { createNamespacedHelpers } from 'vuex'
+const { mapState: authState, mapActions: mapActionsAuth } = createNamespacedHelpers('auth')
 
 export default {
   components: {
     Auth,
     Header,
-    Footer
+    Footer,
+    ModuleHome
   },
   data () {
     return {
@@ -31,16 +37,22 @@ export default {
   created () {
     this.headerContent = {
       left: {},
-      right: {},
+      right: { label: '' },
       center: { label: 'Timeline' }
     }
   },
   methods: {
+    ...mapActionsAuth(['signOut']),
     async loggedIn () {
       console.log('authed')
     },
     async loginFailed () {
       console.log('unauthed')
+    },
+    onRight () {
+      console.log('sign out')
+      this.signOut()
+      this.$router.push('/')
     }
   }
 }

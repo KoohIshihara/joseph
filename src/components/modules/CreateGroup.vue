@@ -59,8 +59,9 @@ export default {
 
       var groupObj = {
         name: this.groupName,
-        createBy: this.uid,
-        createAt: new Date(),
+        createdBy: this.uid,
+        createdAt: new Date(),
+        updatedAt: new Date(),
         status: 'public'
       }
       var groupDoc = await firestore.collection('GROUP').add(groupObj)

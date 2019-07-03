@@ -72,7 +72,8 @@ export default {
     }
   },
   async created () {
-    this.groupPersons = await firestore.collection('PERSON')
+    this.groupPersons = await firestore
+      .collection('PERSON')
       .where('groups', 'array-contains', this.$route.params.group_id)
       .get()
       .then((q) => {

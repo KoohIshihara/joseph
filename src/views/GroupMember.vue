@@ -41,10 +41,11 @@ export default {
   },
   data: () => ({
     group: Object,
-    headerContent: Object
+    headerContent: Object,
+    letAlertForAnonymous: true
   }),
   computed: {
-    ...mapStateAuth(['isLoggedIn', 'uid'])
+    ...mapStateAuth(['isLoggedIn', 'uid', 'isAnonymous'])
   },
   async created () {
     this.group = await firestore.collection('GROUP')
@@ -63,9 +64,11 @@ export default {
   methods: {
     async loggedIn () {
       console.log('authed')
+      this.afterLoggedIn()
     },
     async loginFailed () {
       console.log('unauthed')
+      this.afterLoggedIn()
     },
     isObject (obj) {
       return Object.prototype.toString.call(obj) === '[object Object]'
@@ -75,6 +78,17 @@ export default {
     },
     toChat () {
       this.$router.push(`/chat/${this.$route.params.group_id}`)
+    },
+    afterLoggedIn () {
+      if ((this.isAnonymous && this.letAlertForAnonymous) || !this.isLoggedIn) {
+        var answer = confirm('You need sign in or sign up to create members. Sign Up/In?')
+        if (answer) {
+          this.$router.push(`/sign-in${location.pathname}`)
+        } else {
+          this.back()
+        }
+        this.letAlertForAnonymous = false
+      }
     }
   }
 }

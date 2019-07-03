@@ -59,7 +59,21 @@ export default new Router({
         import('@/views/Chat')
     },
     {
+      path: '/sign-in',
+      name: 'sign-in',
+      props: true,
+      component: () =>
+        import('@/views/SignIn')
+    },
+    {
       path: '/sign-in/:redirect',
+      name: 'sign-in',
+      props: true,
+      component: () =>
+        import('@/views/SignIn')
+    },
+    {
+      path: '/sign-in/:redirect/:id',
       name: 'sign-in',
       props: true,
       component: () =>

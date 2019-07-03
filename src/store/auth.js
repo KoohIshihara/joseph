@@ -10,7 +10,8 @@ export const state = () => ({
   isLoggedIn: false,
   isSigningOut: false,
   uid: null,
-  subscriptionEnder: null
+  subscriptionEnder: null,
+  isAnonymous: null
 })
 
 export const mutations = {
@@ -38,6 +39,7 @@ export const mutations = {
     state.isAuthenticating = false
     state.isLoggedIn = isLoggedIn
     state.isSigningOut = false
+    state.isAnonymous = user ? user.isAnonymous : null
   },
   resetState (state) {
     state.isLoggedIn = false
@@ -45,6 +47,7 @@ export const mutations = {
     state.userAuthEmail = null
     state.isSigningOut = false
     state.userDisplayName = null
+    state.isAnonymous = null
   },
   updateSubscriptionEnder (state, value) {
     state.subscriptionEnder = value

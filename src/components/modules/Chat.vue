@@ -1,7 +1,7 @@
 <template lang="pug">
 
 div.wrap-module
-  div(ref="bubbleWrap").wrap-bubbles.py12
+  div(ref="bubbleWrap" :class="dviceStatus").wrap-bubbles.py12
     ItemChatBubble(v-for="item in messages" :message="item")
   div.wrap-input
     ItemChatInput(:group="group")
@@ -25,6 +25,12 @@ div.wrap-module
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
     overflow-scrolling: touch;
+  }
+  .status-mobile {
+    height: calc(100% - 20px);
+  }
+  .status-mobile-safari {
+    height: calc(100% - 216px);
   }
   .wrap-bubbles::-webkit-scrollbar {
     display: none;
@@ -64,11 +70,20 @@ export default {
   data () {
     return {
       groupName: '',
-      messages: []
+      messages: [],
+      dviceStatus: ''
     }
   },
   async created () {
-    await firestore.collection('GROUP')
+    if (this.$device.mobile) {
+      this.dviceStatus = 'status-mobile'
+      if (navigator.userAgent.indexOf('Safari') !== -1) {
+        this.dviceStatus = 'status-mobile-safari'
+      }
+    }
+
+    await firestore
+      .collection('GROUP')
       .doc(this.group.id)
       .collection('MESSAGE')
       .orderBy('createdAt', 'asc')

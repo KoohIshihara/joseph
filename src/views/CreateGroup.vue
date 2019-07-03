@@ -37,11 +37,12 @@ export default {
   },
   data () {
     return {
-      headerContent: Object
+      headerContent: Object,
+      letAlertForAnonymous: true
     }
   },
   computed: {
-    ...mapStateAuth(['isLoggedIn', 'uid'])
+    ...mapStateAuth(['isLoggedIn', 'uid', 'isAnonymous'])
   },
   created () {
     this.headerContent = {
@@ -52,15 +53,32 @@ export default {
       center: { label: 'New Group' }
     }
   },
+  mounted () {
+
+  },
   methods: {
     async loggedIn () {
       console.log('authed')
+      this.afterLoggedIn()
     },
     async loginFailed () {
       console.log('unauthed')
+      this.afterLoggedIn()
+      // alert('You need sign in or sign up to create a group')
+      // this.$router.push(`/sign-in${location.pathname}`)
     },
     back () {
-      this.$router.back()
+      this.$router.push(`/home`)
+    },
+    afterLoggedIn () {
+      if ((this.isAnonymous && this.letAlertForAnonymous) || !this.isLoggedIn) {
+        var answer = confirm('You need sign in or sign up to create a group. Sign Up/In?')
+        if (answer) {
+          this.$router.push(`/sign-in${location.pathname}`)
+        } else {
+          this.back()
+        }
+      }
     }
   }
 }

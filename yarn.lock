@@ -9473,9 +9473,21 @@ void-elements@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/void-elements/-/void-elements-2.0.1.tgz#c066afb582bb1cb4128d60ea92392e94d5e9dbec"
 
+vue-browser-detect-plugin@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/vue-browser-detect-plugin/-/vue-browser-detect-plugin-0.1.2.tgz#1ac71bda3add4b54593640cf895f3d7e1b17585d"
+  dependencies:
+    vue "^2.5.17"
+
 vue-cli-plugin-vuetify@^0.5.0:
   version "0.5.0"
   resolved "http://registry.npm.taobao.org/vue-cli-plugin-vuetify/download/vue-cli-plugin-vuetify-0.5.0.tgz#14c9a61884da58cf6aaf8ff3309044931907f184"
+
+vue-device-detector@^1.1.3:
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/vue-device-detector/-/vue-device-detector-1.1.3.tgz#0f023640fb64ba9c6300b9634fc39a9c8f00cd91"
+  dependencies:
+    vue "^2.5.22"
 
 vue-eslint-parser@^2.0.3:
   version "2.0.3"
@@ -9550,7 +9562,7 @@ vue-template-es2015-compiler@^1.6.0, vue-template-es2015-compiler@^1.9.0:
   version "1.9.1"
   resolved "http://registry.npm.taobao.org/vue-template-es2015-compiler/download/vue-template-es2015-compiler-1.9.1.tgz#1ee3bc9a16ecbf5118be334bb15f9c46f82f5825"
 
-vue@^2.6.10:
+vue@^2.5.17, vue@^2.5.22, vue@^2.6.10:
   version "2.6.10"
   resolved "http://registry.npm.taobao.org/vue/download/vue-2.6.10.tgz#a72b1a42a4d82a721ea438d1b6bf55e66195c637"
 

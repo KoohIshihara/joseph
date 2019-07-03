@@ -27,8 +27,6 @@ import Auth from '@/components/auth'
 import Header from '@/components/modules/Header'
 import ModuleAddMember from '@/components/modules/AddMember'
 
-import { firestore } from '@/components/utils/firestore'
-
 import { createNamespacedHelpers } from 'vuex'
 const { mapState: mapStateAuth } = createNamespacedHelpers('auth')
 
@@ -40,7 +38,8 @@ export default {
   },
   data () {
     return {
-      headerContent: Object
+      headerContent: Object,
+      letAlertForAnonymous: true
     }
   },
   computed: {

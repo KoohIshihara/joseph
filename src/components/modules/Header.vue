@@ -18,6 +18,7 @@ div.wrap-module
 <style lang="scss" scoped>
 .wrap-module {
   position: absolute;
+  z-index: 100;
   top: 0;
   width: 100%;
   height: 48px;

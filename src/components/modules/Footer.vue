@@ -11,7 +11,7 @@ div.wrap-module
 
 <style lang="scss" scoped>
 .wrap-module {
-  position: absolute;
+  /*position: absolute;*/
   bottom: 0;
   width: 100%;
   height: 48px;
@@ -47,8 +47,8 @@ export default {
   created () {
     this.menu = [
       { icon: 'home', label: 'Timeline', data: 'home' },
-      { icon: 'group_add', label: 'New Group', func: this.createNewGroup, data: 'new_group' },
-      { icon: 'person', label: 'My Page', data: 'my_page' }
+      { icon: 'group_add', label: 'New Group', func: this.createNewGroup, data: 'new_group' }
+      // { icon: 'person', label: 'My Page', data: 'my_page' }
     ]
   },
   methods: {

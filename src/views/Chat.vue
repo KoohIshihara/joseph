@@ -28,6 +28,7 @@ import Auth from '@/components/auth'
 import Header from '@/components/modules/Header'
 import ModuleChat from '@/components/modules/Chat'
 
+import { firebase } from '@/components/utils/firebase'
 import { firestore } from '@/components/utils/firestore'
 
 import { createNamespacedHelpers } from 'vuex'
@@ -44,7 +45,7 @@ export default {
     headerContent: Object
   }),
   computed: {
-    ...mapStateAuth(['isLoggedIn', 'uid'])
+    ...mapStateAuth(['isLoggedIn', 'uid', 'isAnonymous'])
   },
   async created () {
     this.group = await firestore.collection('GROUP')
@@ -68,6 +69,12 @@ export default {
     },
     async loginFailed () {
       console.log('unauthed')
+      firebase.auth().signInAnonymously().catch(function (error) {
+        // Handle Errors here.
+        // eslint-disable-next-line
+        console.error('Login anonymously error: ', error)
+        // ...
+      })
     },
     isObject (obj) {
       return Object.prototype.toString.call(obj) === '[object Object]'

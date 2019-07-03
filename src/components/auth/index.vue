@@ -1,6 +1,6 @@
 <template>
   <div>
-    <slot :sign-out="signOut"/>
+    <slot :sign-out="signOut" />
   </div>
 </template>
 
@@ -13,7 +13,8 @@ export default {
       'uid',
       'isLoggedIn',
       'isAuthenticating',
-      'roles'
+      'roles',
+      'isAnonymous'
     ])
   },
   watch: {

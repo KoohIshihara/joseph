@@ -1,6 +1,6 @@
 <template lang="pug">
 
-div.wrap-item
+div(:class="focusStatus").wrap-item
   div(v-if="persons[0]").wrap-person-selector.py2
     span.pb2 {{`Curent User : ${currentPerson.name}`}}
     div.wrap-icons.f.fm.pl4
@@ -11,17 +11,21 @@ div.wrap-item
         @click="changePerson(item)"
         ).mr8
   div.wrap-input.f.fm
-    textarea(placeholder="message" v-model="message").px6.mr8
+    textarea(placeholder="message" v-model="message" @focus="onTextarea" @blur="outTextarea").px6.py5.mr8
     div.wrap-icon.f.fh
       v-icon(@click="sendMessage") send
+  div.box-sp-adjust.sp-show
 
 </template>
 
 <style lang="scss" scoped>
 .wrap-item {
+  position: relative;
+  top: 0;
   width: 100%;
   height: 100%;
   border-top: solid 0.6px rgba(0, 0, 0, 0.2);
+  transition: all 400ms ease-in;
   .wrap-person-selector {
     width: 94%;
     max-width: 480px;
@@ -65,12 +69,13 @@ div.wrap-item
   .wrap-input {
     width: 94%;
     max-width: 480px;
-    height: 36px;
+    height: 46px;
     margin: 0 auto;
     textarea {
-      width: calc(100% - 24px);
-      height: 24px;
-      border: solid 0.6px rgba(0, 0, 0, 0.1);
+      width: calc(100% - 34px);
+      height: 34px;
+      font-size: 16px;
+      /*border: solid 0.6px rgba(0, 0, 0, 0.1);*/
       outline: none;
       background: #f0f0f0;
       border-radius: 8px;
@@ -83,6 +88,20 @@ div.wrap-item
       }
     }
   }
+
+  // .box-sp-adjust {
+  //   display: block;
+  //   width: 100%;
+  //   height: 0px;
+  //   transition: all 400ms ease-in;
+  // }
+  // .active {
+  //   height: 36px;
+  // }
+}
+
+.active {
+  top: -36px;
 }
 </style>
 
@@ -107,7 +126,8 @@ export default {
     return {
       message: '',
       persons: [],
-      currentPerson: {}
+      currentPerson: {},
+      focusStatus: ''
     }
   },
   async created () {
@@ -136,7 +156,11 @@ export default {
         author: this.uid,
         text: this.message,
         postedAs: this.currentPerson.id,
-        createdAt: new Date()
+        createdAt: new Date(),
+        alikeNum: 0,
+        alikes: [],
+        unlikeNum: 0,
+        unlikes: []
       }
       const messageDoc = await firestore.collection('GROUP')
         .doc(this.$route.params.group_id)
@@ -153,6 +177,12 @@ export default {
       })[0]
 
       this.currentPerson.status = 'hacked'
+    },
+    onTextarea () {
+      if (this.$device.mobile) this.focusStatus = 'active'
+    },
+    outTextarea () {
+      if (this.$device.mobile) this.focusStatus = ''
     }
   }
 }
