@@ -1,10 +1,15 @@
 <template lang="pug">
 
 div.wrap-module
-  div(ref="bubbleWrap" :class="dviceStatus").wrap-bubbles.py12
+  div(ref="bubbleWrap" :class="dviceStatus" :scroll="onscroll").wrap-bubbles.py12
     ItemChatBubble(v-for="item in messages" :message="item")
   div.wrap-input
-    ItemChatInput(:group="group")
+    ItemChatInput(
+      :group="group"
+      :showNotification="showNotification"
+      :notificationLabel="notificationLabel"
+      @hideNotification="hideNotification"
+    )
 
 </template>
 
@@ -27,7 +32,7 @@ div.wrap-module
     overflow-scrolling: touch;
   }
   .status-mobile {
-    height: calc(100% - 20px);
+    height: calc(100vh - 156px);
   }
   .status-mobile-safari {
     height: calc(100% - 216px);
@@ -36,6 +41,7 @@ div.wrap-module
     display: none;
   }
   .wrap-input {
+    position: relative;
     display: block;
     width: 100%;
     height: calc(60px + 36px);
@@ -65,42 +71,108 @@ export default {
     }
   },
   computed: {
-    ...mapStateAuth(['isLoggedIn', 'uid'])
+    ...mapStateAuth(['isLoggedIn', 'uid', 'isAnonymous'])
   },
   data () {
     return {
       groupName: '',
       messages: [],
-      dviceStatus: ''
+      dviceStatus: '',
+      isFirst: true,
+      showNotification: false,
+      notificationLabel: ''
     }
   },
   async created () {
     if (this.$device.mobile) {
       this.dviceStatus = 'status-mobile'
-      if (navigator.userAgent.indexOf('Safari') !== -1) {
+      // if (navigator.userAgent.indexOf('Safari') !== -1) {
+      // if (window.safari !== undefined) {
+      if (navigator.userAgent.search('Safari') >= 0 && navigator.userAgent.search('Chrome') < 0) {
         this.dviceStatus = 'status-mobile-safari'
       }
     }
+  },
+  mounted () {
+    this.$refs.bubbleWrap.addEventListener('scroll', this.onscroll)
 
-    await firestore
+    firestore
       .collection('GROUP')
       .doc(this.group.id)
       .collection('MESSAGE')
       .orderBy('createdAt', 'asc')
       .onSnapshot(q => {
-        this.messages = q.docs.map(d => {
+        const newMessages = q.docs.map(d => {
           var message = d.data()
           message.id = d.id
           return message
         })
-        this.scrollToBottom()
+
+        this.updateMessages(newMessages)
       })
   },
   methods: {
     scrollToBottom () {
       setTimeout(() => {
-        if (this.$refs.bubbleWrap) this.$refs.bubbleWrap.scrollTop = this.$refs.bubbleWrap.scrollHeight
-      }, 400)
+        if (this.$refs.bubbleWrap) {
+          var bubbleWrap = this.$refs.bubbleWrap
+          bubbleWrap.scrollTop = (bubbleWrap.scrollHeight - bubbleWrap.offsetHeight)
+        }
+      }, 800)
+    },
+    onscroll (e) {
+      var bubbleWrap = this.$refs.bubbleWrap
+      if (bubbleWrap.scrollTop === 0 && this.isAnonymous) {
+        // スクロールするほどメッセージがある時
+        if (bubbleWrap.offsetHeight < bubbleWrap.scrollHeight) {
+          this.$emit('openrecomend')
+        }
+      }
+
+      if (bubbleWrap.scrollTop === (bubbleWrap.scrollHeight - bubbleWrap.offsetHeight)) {
+        console.log('hide')
+        this.showNotification = false
+      }
+    },
+    openRecomendSignUp () {
+      // スクロールするほどメッセージがなくてアノニマスな時
+      if (this.$refs.bubbleWrap.offsetHeight >= this.$refs.bubbleWrap.scrollHeight && this.isAnonymous) {
+        setTimeout(() => {
+          this.$emit('openrecomend')
+        }, 8000)
+      }
+    },
+    updateMessages (newMessages) {
+      var bubbleWrap = this.$refs.bubbleWrap
+      var maxScroll = bubbleWrap.scrollHeight - bubbleWrap.offsetHeight
+      var isChatWrapBottom = (maxScroll === bubbleWrap.scrollTop) //! (bubbleWrap.scrollTop < (maxScroll - bubbleWrap.offsetHeight))
+
+      if (this.isFirst) {
+        // はじめのロードだった場合
+        this.messages = newMessages
+        this.scrollToBottom()
+        this.isFirst = false
+      } else if (newMessages.length === this.messages.length) {
+        // Alike Unlikeによる更新だった場合
+        console.log('on alike or unlike')
+      } else if (!isChatWrapBottom) {
+        // 上の方をみている時に新規メッセージがあった場合
+        console.log('show notify of new message')
+        this.messages = newMessages
+        this.notificationLabel = newMessages[newMessages.length - 1].text
+        this.showNotification = true
+      } else if (isChatWrapBottom) {
+        // 下にいる時で新規メッセージがあった場合
+        this.messages = newMessages
+        this.scrollToBottom()
+      }
+    },
+    hideNotification () {
+      this.showNotification = false
+      if (this.$refs.bubbleWrap) {
+        var bubbleWrap = this.$refs.bubbleWrap
+        bubbleWrap.scrollTop = (bubbleWrap.scrollHeight - bubbleWrap.offsetHeight)
+      }
     }
   }
 }

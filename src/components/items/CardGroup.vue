@@ -38,6 +38,7 @@ div(@click="toChat").wrap-item.py10
         overflow: hidden;
         img {
           object-fit: cover;
+          width: 100%;
           height: 100%;
         }
       }
@@ -97,6 +98,7 @@ export default {
   methods: {
     toChat () {
       this.$router.push(`/chat/${this.group.id}`)
+      mixpanel.track('CardGroup: toChat')
     }
   }
 }

@@ -6,7 +6,7 @@ div.wrap-module
       div(v-if="headerContent.left" @click="onLeft").left
         v-icon(v-if="headerContent.left.icon") {{headerContent.left.icon}}
         span(v-if="headerContent.left.label").label {{headerContent.left.label}}
-    div(v-if="headerContent.center").wrap-center
+    div(v-if="headerContent.center").wrap-center.f.fc
       span {{headerContent.center.label}}
     div.wrap-right
       div(v-if="headerContent.right" @click="onRight").right
@@ -25,17 +25,30 @@ div.wrap-module
   border-bottom: solid 0.6px rgba(0, 0, 0, 0.2);
   background: #f8f8f8;
   .wrap-module-content {
+    position: relative;
     width: 90%;
     max-width: 480px;
     height: 100%;
     margin: 0 auto;
     i {
+      position: relative;
+      z-index: 10;
       font-size: 20px;
       cursor: pointer;
     }
     .label {
+      position: relative;
+      z-index: 10;
       color: #03a9f4;
       cursor: pointer;
+    }
+    .wrap-center {
+      position: absolute;
+      z-index: 0;
+      width: 100%;
+      span {
+        margin: 0 auto;
+      }
     }
   }
 }

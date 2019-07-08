@@ -54,6 +54,30 @@ export default {
       } else if (isLoggedIn) {
         this.$emit('loggedIn')
       }
+
+      if (this.isAnonymous) {
+        mixpanel.identify(this.uid)
+        mixpanel.register({
+          userId: this.uid,
+          name: 'Anonymous'
+        })
+        mixpanel.people.set({
+          '$last_login': new Date(),
+          userId: this.uid,
+          name: 'Anonymous'
+        })
+      } else {
+        mixpanel.identify(this.uid)
+        mixpanel.register({
+          userId: this.uid,
+          name: this.uid
+        })
+        mixpanel.people.set({
+          '$last_login': new Date(),
+          userId: this.uid,
+          name: this.uid
+        })
+      }
     }
   }
 }

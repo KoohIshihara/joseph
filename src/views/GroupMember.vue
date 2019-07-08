@@ -78,6 +78,7 @@ export default {
     },
     toChat () {
       this.$router.push(`/chat/${this.$route.params.group_id}`)
+      mixpanel.track('GroupMember: toChat')
     },
     afterLoggedIn () {
       if ((this.isAnonymous && this.letAlertForAnonymous) || !this.isLoggedIn) {

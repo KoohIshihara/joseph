@@ -171,6 +171,8 @@ export default {
       //   })
 
       this.$router.push(`/group_member/${this.$route.params.group_id}`)
+
+      mixpanel.track(`ModuleCreatePerson: createPerson (${this.name})`)
     },
     pickFile () {
       this.$refs.image.click()

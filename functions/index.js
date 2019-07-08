@@ -49,7 +49,7 @@ exports.pushGroupIdToUsers = functions.https.onRequest(async (req, res) => {
 })
 
 // chat/* のOGP
-const appDomain = 'https://joseph-alike.firebaseapp.com'
+const appDomain = 'https://alike.wiki'
 // const appDomain = 'http://localhost:5000'
 const OGP_IMG_WIDTH = 1200
 const OGP_IMG_HEIGHT = 630
@@ -106,7 +106,7 @@ const createHtml = (groupName, groupSubtitle, groupId) => {
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>colorinco</title>
+    <title>${TITLE}</title>
     <meta property="og:title" content="${TITLE}">
     <meta property="og:image" content="${OGP_SRC}">
     <meta property="og:image:width" content="${OGP_IMG_WIDTH}">

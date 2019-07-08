@@ -88,6 +88,7 @@ export default {
     },
     toAddMember () {
       this.$router.push(`/add_member/${this.$route.params.group_id}`)
+      mixpanel.track('GroupMember: toAddMember')
     }
   }
 }

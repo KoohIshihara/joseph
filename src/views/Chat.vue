@@ -7,7 +7,9 @@ Auth(@loggedIn="loggedIn" @loginFailed="loginFailed").wrap-home
     @onLeft="toHome"
     @onRight="toMember"
     )
-  ModuleChat(:group="group" v-if="isObject(headerContent)")
+  ModuleChat(:group="group" v-if="isObject(headerContent)" @openrecomend="toggleShowRecomendSignUp" ref="moduleChat")
+  ModuleTutorial(v-if="showTutorial" @closetutorial="closetutorial")
+  ModuleRecomendSignUp(v-if="showRecomendSignUp" @closerecomend="toggleShowRecomendSignUp")
 
 </template>
 
@@ -27,22 +29,29 @@ Auth(@loggedIn="loggedIn" @loginFailed="loginFailed").wrap-home
 import Auth from '@/components/auth'
 import Header from '@/components/modules/Header'
 import ModuleChat from '@/components/modules/Chat'
+import ModuleTutorial from '@/components/modules/Tutorial'
+import ModuleRecomendSignUp from '@/components/modules/RecomendSignUp'
 
 import { firebase } from '@/components/utils/firebase'
 import { firestore } from '@/components/utils/firestore'
 
 import { createNamespacedHelpers } from 'vuex'
+import { setTimeout } from 'timers'
 const { mapState: mapStateAuth } = createNamespacedHelpers('auth')
 
 export default {
   components: {
     Auth,
     Header,
-    ModuleChat
+    ModuleChat,
+    ModuleTutorial,
+    ModuleRecomendSignUp
   },
   data: () => ({
     group: Object,
-    headerContent: Object
+    headerContent: Object,
+    showTutorial: false,
+    showRecomendSignUp: false
   }),
   computed: {
     ...mapStateAuth(['isLoggedIn', 'uid', 'isAnonymous'])
@@ -61,6 +70,15 @@ export default {
       left: { icon: 'arrow_back_ios' },
       right: { icon: 'group_add' },
       center: { label: this.group.name }
+    }
+
+    if (this.isAnonymous) this.headerContent.right = { label: 'Sign Up' }
+
+    if (this.isAnonymous) {
+      console.log('isAnonymous')
+      setTimeout(() => {
+        this.showTutorial = true
+      }, 1200)
     }
   },
   methods: {
@@ -83,7 +101,20 @@ export default {
       this.$router.push(`/home`)
     },
     toMember () {
-      this.$router.push(`/group_member/${this.$route.params.group_id}`)
+      if (this.isAnonymous) {
+        this.$router.push(`/sign-up${this.$route.path}`)
+        mixpanel.track('Chat: sign up on header (isAnonymous)')
+      } else {
+        this.$router.push(`/group_member/${this.$route.params.group_id}`)
+        mixpanel.track('Chat: toGroupMember')
+      }
+    },
+    closetutorial () {
+      this.showTutorial = false
+      this.$refs.moduleChat.openRecomendSignUp()
+    },
+    toggleShowRecomendSignUp () {
+      this.showRecomendSignUp = !this.showRecomendSignUp
     }
   }
 }

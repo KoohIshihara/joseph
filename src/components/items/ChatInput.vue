@@ -1,6 +1,9 @@
 <template lang="pug">
 
 div(:class="focusStatus").wrap-item
+  div(v-if="showNotification" @click="hideNotification").wrap-notification.f.fh
+    div.notification
+      span {{notificationLabel}}
   div(v-if="persons[0]").wrap-person-selector.py2
     span.pb2 {{`Curent User : ${currentPerson.name}`}}
     div.wrap-icons.f.fm.pl4
@@ -21,11 +24,26 @@ div(:class="focusStatus").wrap-item
 <style lang="scss" scoped>
 .wrap-item {
   position: relative;
+  overflow: visible;
   top: 0;
   width: 100%;
   height: 100%;
   border-top: solid 0.6px rgba(0, 0, 0, 0.2);
+  background: #fff;
   transition: all 400ms ease-in;
+  .wrap-notification {
+    position: absolute;
+    width: 100%;
+    height: 38px;
+    top: -38px;
+    border-top: solid 0.6px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.7);
+    .notification {
+      width: 94%;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+  }
   .wrap-person-selector {
     width: 94%;
     max-width: 480px;
@@ -117,6 +135,14 @@ export default {
     group: {
       type: Object,
       required: true
+    },
+    showNotification: {
+      type: Boolean,
+      required: true
+    },
+    notificationLabel: {
+      type: String,
+      required: true
     }
   },
   computed: {
@@ -168,6 +194,8 @@ export default {
         .add(messageObj)
       messageObj.id = messageDoc.id
       this.message = ''
+
+      mixpanel.track('ChatInput: sendMessage')
     },
     changePerson (targetPerson) {
       this.currentPerson.status = 'un-hacked'
@@ -177,12 +205,23 @@ export default {
       })[0]
 
       this.currentPerson.status = 'hacked'
+
+      mixpanel.track('ChatInput: changePerson')
     },
     onTextarea () {
       if (this.$device.mobile) this.focusStatus = 'active'
+
+      mixpanel.track('ChatInput: onTextarea')
     },
     outTextarea () {
       if (this.$device.mobile) this.focusStatus = ''
+
+      mixpanel.track('ChatInput: outTextarea')
+    },
+    hideNotification () {
+      this.$emit('hideNotification')
+
+      mixpanel.track('ChatInput: on notification')
     }
   }
 }

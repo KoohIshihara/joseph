@@ -135,6 +135,10 @@ export default {
 
       messageRef.update({ alikes: firebase.firestore.FieldValue.arrayUnion(this.uid) })
       messageRef.update({ alikeNum: firebase.firestore.FieldValue.increment(1) })
+
+      this.message.alikeNum++
+
+      mixpanel.track('ChatBubble: addAlike')
     },
     async addUnlike () {
       if (this.unlikeStatus === 'posted') return
@@ -147,6 +151,10 @@ export default {
 
       messageRef.update({ unlikes: firebase.firestore.FieldValue.arrayUnion(this.uid) })
       messageRef.update({ unlikeNum: firebase.firestore.FieldValue.increment(1) })
+
+      this.message.unlikeNum++
+
+      mixpanel.track('ChatBubble: addUnlike')
     }
   }
 }

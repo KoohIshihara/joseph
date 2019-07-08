@@ -20,7 +20,7 @@ import Footer from '@/components/modules/Footer'
 import ModuleHome from '@/components/modules/Home'
 
 import { createNamespacedHelpers } from 'vuex'
-const { mapState: authState, mapActions: mapActionsAuth } = createNamespacedHelpers('auth')
+const { mapState: mapStateAuth, mapActions: mapActionsAuth } = createNamespacedHelpers('auth')
 
 export default {
   components: {
@@ -28,6 +28,9 @@ export default {
     Header,
     Footer,
     ModuleHome
+  },
+  computed: {
+    ...mapStateAuth(['isLoggedIn', 'uid', 'isAnonymous'])
   },
   data () {
     return {
@@ -40,6 +43,10 @@ export default {
       right: { label: '' },
       center: { label: 'Timeline' }
     }
+
+    if (this.isAnonymous || !this.uid) this.headerContent.right = { label: 'Sign Up' }
+
+    window.signOut = this.signOut
   },
   methods: {
     ...mapActionsAuth(['signOut']),
@@ -51,8 +58,14 @@ export default {
     },
     onRight () {
       console.log('sign out')
-      this.signOut()
-      this.$router.push('/')
+      if (this.isAnonymous || !this.uid) {
+        this.$router.push('/sign-up')
+        mixpanel.track('Home: onRight (sign up) (Anonymous)')
+      } else {
+        this.signOut()
+        this.$router.push('/')
+        mixpanel.track('Home: onRight (sign out)')
+      }
     }
   }
 }

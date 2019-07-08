@@ -64,6 +64,7 @@ export default {
     },
     onAdd () {
       this.$refs.moduleAddMember.addPersonsToGroup()
+      mixpanel.track('AddMember: onAdd')
     }
   }
 }

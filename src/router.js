@@ -78,6 +78,27 @@ export default new Router({
       props: true,
       component: () =>
         import('@/views/SignIn')
+    },
+    {
+      path: '/sign-up',
+      name: 'sign-up',
+      props: true,
+      component: () =>
+        import('@/views/SignIn')
+    },
+    {
+      path: '/sign-up/:redirect',
+      name: 'sign-up',
+      props: true,
+      component: () =>
+        import('@/views/SignIn')
+    },
+    {
+      path: '/sign-up/:redirect/:id',
+      name: 'sign-up',
+      props: true,
+      component: () =>
+        import('@/views/SignIn')
     }
   ]
 })

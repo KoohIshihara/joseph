@@ -18,7 +18,7 @@ div(:class="dviceStatus").wrap-module
   overflow-scrolling: touch;
 }
 .status-mobile {
-  height: calc(100vh - 20px);
+  height: calc(100vh - 48px);
 }
 .status-mobile-safari {
   height: calc(100vh - 166px);
@@ -50,7 +50,9 @@ export default {
   async created () {
     if (this.$device.mobile) {
       this.dviceStatus = 'status-mobile'
-      if (navigator.userAgent.indexOf('Safari') !== -1) {
+      // if (navigator.userAgent.indexOf('Safari') !== -1) {
+      // if (window.safari !== undefined) {
+      if (navigator.userAgent.search('Safari') >= 0 && navigator.userAgent.search('Chrome') < 0) {
         this.dviceStatus = 'status-mobile-safari'
       }
     }

@@ -67,6 +67,8 @@ export default {
       var groupDoc = await firestore.collection('GROUP').add(groupObj)
 
       this.$router.push(`add_member/${groupDoc.id}`)
+
+      mixpanel.track(`ModuleCreateGroup: createGroup (${this.groupName})`)
     }
   }
 }

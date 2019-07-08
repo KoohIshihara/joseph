@@ -1,0 +1,276 @@
+[debug] [2019-07-08T21:04:33.727Z] ----------------------------------------------------------------------
+[debug] [2019-07-08T21:04:33.729Z] Command:       /Users/Kou/.nvm/v10.15.1/bin/node /Users/Kou/.nodebrew/current/bin/firebase serve
+[debug] [2019-07-08T21:04:33.729Z] CLI Version:   5.1.1
+[debug] [2019-07-08T21:04:33.729Z] Platform:      darwin
+[debug] [2019-07-08T21:04:33.729Z] Node Version:  v10.15.1
+[debug] [2019-07-08T21:04:33.730Z] Time:          Tue Jul 09 2019 06:04:33 GMT+0900 (GMT+09:00)
+[debug] [2019-07-08T21:04:33.730Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-07-08T21:04:33.742Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-07-08T21:04:33.742Z] > authorizing via signed-in user
+[debug] [2019-07-08T21:04:33.743Z] [iam] checking project joseph-alike for permissions ["firebase.projects.get"]
+[debug] [2019-07-08T21:04:33.744Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/joseph-alike:testIamPermissions  
+
+[debug] [2019-07-08T21:04:34.725Z] <<< HTTP RESPONSE 200
+[debug] [2019-07-08T21:04:34.726Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/joseph-alike  
+ 
+[debug] [2019-07-08T21:04:35.677Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/Kou/projects/vue-projects/joseph'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2019-07-08T21:04:36.457Z] Fetching environment
+[debug] [2019-07-08T21:04:36.459Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/450074324465:getServerAppConfig  
+ 
+[debug] [2019-07-08T21:04:36.460Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/450074324465/clients/_:getWebAppConfig  
+ 
+[debug] [2019-07-08T21:04:36.897Z] <<< HTTP RESPONSE 200
+[debug] [2019-07-08T21:04:36.897Z] Starting @google-cloud/functions-emulator
+[debug] [2019-07-08T21:04:36.932Z] Parsing function triggers
+[debug] [2019-07-08T21:04:37.285Z] <<< HTTP RESPONSE 500
+[debug] [2019-07-08T21:04:37.285Z] <<< HTTP RESPONSE BODY
+[error] 
+[error] Error: HTTP Error: 500, Request '/ApiKeys.ListApiKeys' from role 'mobilesdk-devrel-frontend' throttled: Service is overloaded (too-many-retries) go/tr-o.
+[debug] [2019-07-08T21:04:37.516Z] Error Context: {
+  "body": {
+    "error": {
+      "code": 500,
+      "message": "Request '/ApiKeys.ListApiKeys' from role 'mobilesdk-devrel-frontend' throttled: Service is overloaded (too-many-retries) go/tr-o.",
+      "status": "INTERNAL",
+      "details": [
+        {
+          "@type": "type.googleapis.com/google.internal.firebase.v1.ErrorCode"
+        }
+      ]
+    }
+  },
+  "response": {
+    "statusCode": 500,
+    "body": {
+      "error": {
+        "code": 500,
+        "message": "Request '/ApiKeys.ListApiKeys' from role 'mobilesdk-devrel-frontend' throttled: Service is overloaded (too-many-retries) go/tr-o.",
+        "status": "INTERNAL",
+        "details": [
+          {
+            "@type": "type.googleapis.com/google.internal.firebase.v1.ErrorCode"
+          }
+        ]
+      }
+    },
+    "headers": {
+      "vary": "X-Origin, Referer, Origin,Accept-Encoding",
+      "content-type": "application/json; charset=UTF-8",
+      "date": "Mon, 08 Jul 2019 21:04:37 GMT",
+      "server": "ESF",
+      "cache-control": "private",
+      "x-xss-protection": "0",
+      "x-frame-options": "SAMEORIGIN",
+      "x-content-type-options": "nosniff",
+      "alt-svc": "quic=\":443\"; ma=2592000; v=\"46,43,39\"",
+      "accept-ranges": "none",
+      "connection": "close"
+    },
+    "request": {
+      "uri": {
+        "protocol": "https:",
+        "slashes": true,
+        "auth": null,
+        "host": "mobilesdk-pa.googleapis.com",
+        "port": 443,
+        "hostname": "mobilesdk-pa.googleapis.com",
+        "hash": null,
+        "search": null,
+        "query": null,
+        "pathname": "/v1/projects/450074324465/clients/_:getWebAppConfig",
+        "path": "/v1/projects/450074324465/clients/_:getWebAppConfig",
+        "href": "https://mobilesdk-pa.googleapis.com/v1/projects/450074324465/clients/_:getWebAppConfig"
+      },
+      "method": "GET"
+    }
+  }
+}
+[debug] [2019-07-08T21:07:39.012Z] ----------------------------------------------------------------------
+[debug] [2019-07-08T21:07:39.015Z] Command:       /Users/Kou/.nodebrew/node/v9.3.0/bin/node /Users/Kou/.nodebrew/current/bin/firebase serve
+[debug] [2019-07-08T21:07:39.015Z] CLI Version:   5.1.1
+[debug] [2019-07-08T21:07:39.015Z] Platform:      darwin
+[debug] [2019-07-08T21:07:39.016Z] Node Version:  v9.3.0
+[debug] [2019-07-08T21:07:39.016Z] Time:          Tue Jul 09 2019 06:07:39 GMT+0900 (JST)
+[debug] [2019-07-08T21:07:39.016Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-07-08T21:07:39.030Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-07-08T21:07:39.030Z] > authorizing via signed-in user
+[debug] [2019-07-08T21:07:39.031Z] [iam] checking project joseph-alike for permissions ["firebase.projects.get"]
+[debug] [2019-07-08T21:07:39.032Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/joseph-alike:testIamPermissions  
+
+[debug] [2019-07-08T21:07:41.439Z] <<< HTTP RESPONSE 200
+[debug] [2019-07-08T21:07:41.441Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/joseph-alike  
+ 
+[debug] [2019-07-08T21:07:43.165Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/Kou/projects/vue-projects/joseph'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2019-07-08T21:07:43.923Z] Fetching environment
+[debug] [2019-07-08T21:07:43.925Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/450074324465:getServerAppConfig  
+ 
+[debug] [2019-07-08T21:07:43.926Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/450074324465/clients/_:getWebAppConfig  
+ 
+[debug] [2019-07-08T21:07:46.364Z] <<< HTTP RESPONSE 200
+[debug] [2019-07-08T21:07:46.365Z] Starting @google-cloud/functions-emulator
+[debug] [2019-07-08T21:07:47.140Z] <<< HTTP RESPONSE 500
+[debug] [2019-07-08T21:07:47.140Z] <<< HTTP RESPONSE BODY
+[debug] [2019-07-08T21:07:47.925Z] Parsing function triggers
+[error] 
+[error] Error: HTTP Error: 500, Request '/ApiKeys.ListApiKeys' from role 'mobilesdk-devrel-frontend' throttled: Service is overloaded (exponential-moving-average-task-load) go/tr-o.
+[debug] [2019-07-08T21:07:48.700Z] Error Context: {
+  "body": {
+    "error": {
+      "code": 500,
+      "message": "Request '/ApiKeys.ListApiKeys' from role 'mobilesdk-devrel-frontend' throttled: Service is overloaded (exponential-moving-average-task-load) go/tr-o.",
+      "status": "INTERNAL",
+      "details": [
+        {
+          "@type": "type.googleapis.com/google.internal.firebase.v1.ErrorCode"
+        }
+      ]
+    }
+  },
+  "response": {
+    "statusCode": 500,
+    "body": {
+      "error": {
+        "code": 500,
+        "message": "Request '/ApiKeys.ListApiKeys' from role 'mobilesdk-devrel-frontend' throttled: Service is overloaded (exponential-moving-average-task-load) go/tr-o.",
+        "status": "INTERNAL",
+        "details": [
+          {
+            "@type": "type.googleapis.com/google.internal.firebase.v1.ErrorCode"
+          }
+        ]
+      }
+    },
+    "headers": {
+      "vary": "X-Origin, Referer, Origin,Accept-Encoding",
+      "content-type": "application/json; charset=UTF-8",
+      "date": "Mon, 08 Jul 2019 21:07:46 GMT",
+      "server": "ESF",
+      "cache-control": "private",
+      "x-xss-protection": "0",
+      "x-frame-options": "SAMEORIGIN",
+      "x-content-type-options": "nosniff",
+      "alt-svc": "quic=\":443\"; ma=2592000; v=\"46,43,39\"",
+      "accept-ranges": "none",
+      "connection": "close"
+    },
+    "request": {
+      "uri": {
+        "protocol": "https:",
+        "slashes": true,
+        "auth": null,
+        "host": "mobilesdk-pa.googleapis.com",
+        "port": 443,
+        "hostname": "mobilesdk-pa.googleapis.com",
+        "hash": null,
+        "search": null,
+        "query": null,
+        "pathname": "/v1/projects/450074324465/clients/_:getWebAppConfig",
+        "path": "/v1/projects/450074324465/clients/_:getWebAppConfig",
+        "href": "https://mobilesdk-pa.googleapis.com/v1/projects/450074324465/clients/_:getWebAppConfig"
+      },
+      "method": "GET"
+    }
+  }
+}
+[debug] [2019-07-08T21:08:11.330Z] ----------------------------------------------------------------------
+[debug] [2019-07-08T21:08:11.332Z] Command:       /Users/Kou/.nodebrew/node/v9.3.0/bin/node /Users/Kou/.nodebrew/current/bin/firebase serve
+[debug] [2019-07-08T21:08:11.332Z] CLI Version:   5.1.1
+[debug] [2019-07-08T21:08:11.332Z] Platform:      darwin
+[debug] [2019-07-08T21:08:11.332Z] Node Version:  v9.3.0
+[debug] [2019-07-08T21:08:11.332Z] Time:          Tue Jul 09 2019 06:08:11 GMT+0900 (JST)
+[debug] [2019-07-08T21:08:11.332Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-07-08T21:08:11.341Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-07-08T21:08:11.341Z] > authorizing via signed-in user
+[debug] [2019-07-08T21:08:11.341Z] [iam] checking project joseph-alike for permissions ["firebase.projects.get"]
+[debug] [2019-07-08T21:08:11.343Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/joseph-alike:testIamPermissions  
+
+[debug] [2019-07-08T21:08:12.515Z] <<< HTTP RESPONSE 200
+[debug] [2019-07-08T21:08:12.516Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/joseph-alike  
+ 
+[debug] [2019-07-08T21:08:13.495Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/Kou/projects/vue-projects/joseph'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2019-07-08T21:08:13.992Z] Fetching environment
+[debug] [2019-07-08T21:08:13.993Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/450074324465:getServerAppConfig  
+ 
+[debug] [2019-07-08T21:08:13.994Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/450074324465/clients/_:getWebAppConfig  
+ 
+[debug] [2019-07-08T21:08:15.124Z] <<< HTTP RESPONSE 200
+[debug] [2019-07-08T21:08:15.124Z] Starting @google-cloud/functions-emulator
+[debug] [2019-07-08T21:08:15.160Z] Parsing function triggers
+[debug] [2019-07-08T21:08:15.502Z] <<< HTTP RESPONSE 500
+[debug] [2019-07-08T21:08:15.503Z] <<< HTTP RESPONSE BODY
+[error] 
+[error] Error: HTTP Error: 500, Request '/ApiKeys.ListApiKeys' from role 'mobilesdk-devrel-frontend' throttled: Service is overloaded (exponential-moving-average-task-load) go/tr-o.
+[debug] [2019-07-08T21:08:15.888Z] Error Context: {
+  "body": {
+    "error": {
+      "code": 500,
+      "message": "Request '/ApiKeys.ListApiKeys' from role 'mobilesdk-devrel-frontend' throttled: Service is overloaded (exponential-moving-average-task-load) go/tr-o.",
+      "status": "INTERNAL",
+      "details": [
+        {
+          "@type": "type.googleapis.com/google.internal.firebase.v1.ErrorCode"
+        }
+      ]
+    }
+  },
+  "response": {
+    "statusCode": 500,
+    "body": {
+      "error": {
+        "code": 500,
+        "message": "Request '/ApiKeys.ListApiKeys' from role 'mobilesdk-devrel-frontend' throttled: Service is overloaded (exponential-moving-average-task-load) go/tr-o.",
+        "status": "INTERNAL",
+        "details": [
+          {
+            "@type": "type.googleapis.com/google.internal.firebase.v1.ErrorCode"
+          }
+        ]
+      }
+    },
+    "headers": {
+      "vary": "X-Origin, Referer, Origin,Accept-Encoding",
+      "content-type": "application/json; charset=UTF-8",
+      "date": "Mon, 08 Jul 2019 21:08:15 GMT",
+      "server": "ESF",
+      "cache-control": "private",
+      "x-xss-protection": "0",
+      "x-frame-options": "SAMEORIGIN",
+      "x-content-type-options": "nosniff",
+      "alt-svc": "quic=\":443\"; ma=2592000; v=\"46,43,39\"",
+      "accept-ranges": "none",
+      "connection": "close"
+    },
+    "request": {
+      "uri": {
+        "protocol": "https:",
+        "slashes": true,
+        "auth": null,
+        "host": "mobilesdk-pa.googleapis.com",
+        "port": 443,
+        "hostname": "mobilesdk-pa.googleapis.com",
+        "hash": null,
+        "search": null,
+        "query": null,
+        "pathname": "/v1/projects/450074324465/clients/_:getWebAppConfig",
+        "path": "/v1/projects/450074324465/clients/_:getWebAppConfig",
+        "href": "https://mobilesdk-pa.googleapis.com/v1/projects/450074324465/clients/_:getWebAppConfig"
+      },
+      "method": "GET"
+    }
+  }
+}
