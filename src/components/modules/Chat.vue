@@ -8,6 +8,7 @@ div.wrap-module
       :group="group"
       :showNotification="showNotification"
       :notificationLabel="notificationLabel"
+      :dviceStatus="dviceStatus"
       @hideNotification="hideNotification"
     )
 
@@ -35,6 +36,9 @@ div.wrap-module
     height: calc(100vh - 156px);
   }
   .status-mobile-safari {
+    height: calc(100% - 216px);
+  }
+  .status-mobile-android {
     height: calc(100% - 216px);
   }
   .wrap-bubbles::-webkit-scrollbar {
@@ -90,6 +94,9 @@ export default {
       // if (window.safari !== undefined) {
       if (navigator.userAgent.search('Safari') >= 0 && navigator.userAgent.search('Chrome') < 0) {
         this.dviceStatus = 'status-mobile-safari'
+      }
+      if (navigator.userAgent.indexOf('Android') > 0) {
+        this.dviceStatus = 'status-mobile-android'
       }
     }
   },

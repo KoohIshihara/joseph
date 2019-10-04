@@ -31,11 +31,13 @@ div(@click="toChat").wrap-item.py10
       min-height: 21px;
     }
     .wrap-persons {
+      overflow: scroll;
       .wrap-icon {
         width: 28px;
         height: 28px;
         border-radius: 50%;
         overflow: hidden;
+        flex: 0 0 28px;
         img {
           object-fit: cover;
           width: 100%;

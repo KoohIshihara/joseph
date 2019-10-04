@@ -37,6 +37,7 @@ div.wrap-item
       }
     }
     .wrap-profile {
+      width: calc(100% - 86px);
       .name {
         font-weight: bold;
         font-size: 16px;

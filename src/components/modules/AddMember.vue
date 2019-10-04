@@ -23,6 +23,7 @@ div.wrap-module
   overflow-scrolling: touch;
   .wrap-add-member-content {
     width: 100%;
+    height: calc(100vh - 48px);
     margin: 0 auto;
     .wrap-to-create-member {
       width: 100%;

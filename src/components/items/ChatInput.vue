@@ -18,6 +18,7 @@ div(:class="focusStatus").wrap-item
     div.wrap-icon.f.fh
       v-icon(@click="sendMessage") send
   div.box-sp-adjust.sp-show
+  // div(v-if="dviceStatus === 'status-mobile-android'").sp-adjust-for-android
 
 </template>
 
@@ -107,6 +108,11 @@ div(:class="focusStatus").wrap-item
     }
   }
 
+  // .sp-adjust-for-android {
+  //   display: block;
+  //   width: 100%;
+  //   height: 48px;
+  // }
   // .box-sp-adjust {
   //   display: block;
   //   width: 100%;
@@ -143,6 +149,10 @@ export default {
     notificationLabel: {
       type: String,
       required: true
+    },
+    dviceStatus: {
+      type: String,
+      required: false
     }
   },
   computed: {
