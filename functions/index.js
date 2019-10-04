@@ -53,7 +53,7 @@ const appDomain = 'https://alike.wiki'
 // const appDomain = 'http://localhost:5000'
 const OGP_IMG_WIDTH = 1200
 const OGP_IMG_HEIGHT = 630
-const OGP_SRC = 'https://firebasestorage.googleapis.com/v0/b/joseph-alike.appspot.com/o/joseph_ogp.png?alt=media&token=70a8b3e4-3eea-45bc-b59b-f74812afb17c'
+const OGP_SRC = 'https://firebasestorage.googleapis.com/v0/b/joseph-alike.appspot.com/o/joseph_ogp.png?alt=media&token=bf16be31-83ef-4474-bd74-0be725fd3d60'
 
 exports.chatRedirect = functions.https.onRequest(async (req, res) => {
   cors(req, res, async () => {
@@ -98,12 +98,12 @@ exports.chatRedirect = functions.https.onRequest(async (req, res) => {
 
 const createHtml = (groupName, groupSubtitle, groupId) => {
   const SITEURL = appDomain
-  const PAGEURL = `${SITEURL}/@chat/${groupId}`
+  const PAGEURL = `${SITEURL}/chat/${groupId}`
   const TITLE = groupName
   const DESCRIPTION = groupSubtitle
   return `<!DOCTYPE html>
 <html>
-  <head>
+  <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>${TITLE}</title>
@@ -115,6 +115,7 @@ const createHtml = (groupName, groupSubtitle, groupId) => {
     <meta property="og:url" content="${PAGEURL}">
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="${TITLE}">
+    <meta property="fb:app_id" content="2157289604393039" />
     <meta name="twitter:site" content="${SITEURL}">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="${TITLE}">

@@ -8,8 +8,8 @@ Auth(@loggedIn="loggedIn" @loginFailed="loginFailed").wrap-home
     @onRight="toMember"
     )
   ModuleChat(:group="group" v-if="isObject(headerContent)" @openrecomend="toggleShowRecomendSignUp" ref="moduleChat")
-  ModuleTutorial(v-if="showTutorial" @closetutorial="closetutorial")
-  ModuleRecomendSignUp(v-if="showRecomendSignUp" @closerecomend="toggleShowRecomendSignUp")
+  //ModuleTutorial(v-if="showTutorial" @closetutorial="closetutorial")
+  //ModuleRecomendSignUp(v-if="showRecomendSignUp" @closerecomend="toggleShowRecomendSignUp")
 
 </template>
 
@@ -102,10 +102,10 @@ export default {
     },
     toMember () {
       if (this.isAnonymous) {
-        this.$router.push(`/sign-up${this.$route.path}`)
+        // this.$router.push(`/sign-up${this.$route.path}`)
         mixpanel.track('Chat: sign up on header (isAnonymous)')
       } else {
-        this.$router.push(`/group_member/${this.$route.params.group_id}`)
+        // this.$router.push(`/group_member/${this.$route.params.group_id}`)
         mixpanel.track('Chat: toGroupMember')
       }
     },

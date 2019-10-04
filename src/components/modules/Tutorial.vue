@@ -74,27 +74,27 @@ export default {
     this.steps = [
       {
         src: '/img/tutorials/tutorial1.png',
-        title: 'Alikeへようこそ！',
+        title: 'Welcome to Alike.',
         explain: [
-          'ALIKEは誰かのフリを通して、新しいコミュニケーションを模索する活動です。'
+          // 'ALIKEは誰かのフリを通して、新しいコミュニケーションを模索する活動です。'
+          "Let's become us."
         ],
         buttonLabel: 'NEXT'
       },
       {
         src: '/img/tutorials/tutorial2.png',
-        title: 'その人っぽいことを話してみましょう',
+        title: 'You are us.',
         explain: [
-          'ユーザーを選択するとそのアカウントをハックしてお話ができます。',
-          '誰がハックしたかはあなた以外にはわかりません。'
+          'You can talk anything as us.'
         ],
         buttonLabel: 'NEXT'
       },
       {
         src: '/img/tutorials/tutorial3.png',
-        title: '「っぽいね！」を評価しましょう',
+        title: 'Evaluate pretendings',
         explain: [
-          'Alikeボタンは誰かのなりすましに「っぽいね！」を評価するボタンです。',
-          '逆にその人っぽくないと感じたらUnlikeを押しましょう。'
+          'If you think the messeage looks like ours,',
+          'push the button Alike'
         ],
         buttonLabel: 'OK'
       }

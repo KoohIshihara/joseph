@@ -17,7 +17,8 @@ div(:class="focusStatus").wrap-item
     textarea(placeholder="message" v-model="message" @focus="onTextarea" @blur="outTextarea").px6.py5.mr8
     div.wrap-icon.f.fh
       v-icon(@click="sendMessage") send
-  div.box-sp-adjust.sp-show
+  div.more-box
+  //div.box-sp-adjust.sp-show
 
 </template>
 
@@ -105,6 +106,11 @@ div(:class="focusStatus").wrap-item
         cursor: pointer;
       }
     }
+  }
+
+  .more-box {
+    display: block;
+    height: 48px;
   }
 
   // .box-sp-adjust {

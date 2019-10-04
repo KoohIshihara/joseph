@@ -18,7 +18,7 @@ div.wrap-module
 
   overflow: scroll;
   display: block;
-  min-height: 100vh;
+  height: 100vh;
   -webkit-overflow-scrolling: touch;
   overflow-scrolling: touch;
   .wrap-add-member-content {
